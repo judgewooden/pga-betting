@@ -47,7 +47,9 @@ def leaderboard():
 
         json_output = []
         for i in range(0, len(tablelist), 3):
-            record = { 'pos': tablelist[i].replace("-", "").replace(" ", ""), 'name': tablelist[i+1], 'cut': False }
+            record = { 'pos': tablelist[i].replace("-", "").replace(" ", ""),
+                       'name': tablelist[i+1],
+                       'cut': False }
             if (tablelist[i][:3] == 'The') or (tablelist[i][:3] == 'Pro'):
                 break
             json_output.append(record)
@@ -55,7 +57,9 @@ def leaderboard():
         if i < len(tablelist):
             start = i + 1
             for i in range(start, len(tablelist), 3):
-                record = { 'pos': tablelist[i].replace("-", ""), 'name': tablelist[i+1], 'cut': True }
+                record = { 'pos': tablelist[i].replace("-", ""),
+                           'name': tablelist[i+1],
+                           'cut': True }
                 json_output.append(record)
         pga_json['leaderboard'] = json_output
         if USE_REDIS:
@@ -95,11 +99,11 @@ def calc_result():
             pos = name_to_pos.get(bet['name'])
             if pos:
                 bet["loc"] = pos.strip()
-                pos = pos.replace(" ", "")
-                pos = pos.replace("T", "")
+
+                pos = pos.replace(" ", "").replace("T", "")
                 punten = 0
-                if len(pos) > 0:   
-                    if int(pos) < 10:
+                if len(pos) > 0:
+                    if int(pos) < 11:
                         punten = 15
                         if int(pos) == int(bet['pos']):
                             punten = 30
@@ -108,29 +112,29 @@ def calc_result():
                 bet["punten"] = punten
                 total += punten
 
-                bet['cut'] = name_to_cut.get(bet['name'])
             else:
                 bet["loc"] = None
                 if bet['name'] != "":
                     print(f"\tMissing: {bet['pos']}, Name: {bet['name']}")
+
+            bet['cut'] = name_to_cut.get(bet['name'])
+
         person["totaal"] = total
+        person["winnings"] = ""
 
     bets_sorted = sorted(bets_json['gamblers'], key=lambda x: x["totaal"], reverse=True)
     bets_json['gamblers'] = bets_sorted
-
-    for bet in bets_sorted:
-        bet['winnings'] = ""
 
     total_prize = bets_json["pot"]
     prizes = [total_prize * 0.5, total_prize * 0.3, total_prize * 0.2]
 
     top_scores = sorted(set(player['totaal'] for player in bets_sorted), reverse=True)
-    for i, score in enumerate(top_scores[:3]):
+    for index, score in enumerate(top_scores[:3]):
         bets_with_score = [p for p in bets_sorted if p['totaal'] == score]
         number_of_bets = len(bets_with_score)
         for bet in bets_with_score:
-            winnings = "{:.2f}".format(math.floor(prizes[i] / number_of_bets *100) / 100)
-            bet['winnings'] = '€ ' + winnings.replace(".", ",")
+            winnings = math.floor(prizes[index] / number_of_bets * 100) / 100
+            bet['winnings'] = f"€ {winnings:.2f}".replace('.', ',')
 
     if USE_REDIS:
         r.setex("pga-scaper-score:results", REDIS_TTL, json.dumps(bets_json))
@@ -147,7 +151,7 @@ def load_result():
 
 def create_html():
     """
-    Create an HTML document with various elements and data from the 'results_json' and 'load_leaderboard' functions, then write the result to a file named 'results.html'.
+    Create an HTML document with various elements and data
     """
     impl = getDOMImplementation()
     document_type = impl.createDocumentType(
@@ -201,7 +205,7 @@ def create_html():
     th.appendChild(dom.createTextNode('Ranking'))
     tr.appendChild(th)
     thead.appendChild(tr)
-    
+
     tbody = table.appendChild(dom.createElement("tbody"))
     for person in results_json['gamblers']:
 
@@ -296,7 +300,7 @@ def create_html():
     th.appendChild(dom.createTextNode('Leaderboard'))
     tr.appendChild(th)
     thead.appendChild(tr)
-    
+
     tbody = table.appendChild(dom.createElement("tbody"))
     for person in load_leaderboard()['leaderboard']:
 
