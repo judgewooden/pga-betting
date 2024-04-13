@@ -1,0 +1,292 @@
+{
+	"pot": 380,
+	"gamblers":
+	[
+		{
+			"name": "Jack Doresey",
+			"bet": [
+				{ "pos": "1", "name": "Scottie Scheffler" },
+				{ "pos": "2", "name": "Akshay Bhatia" },
+				{ "pos": "3", "name": "Cameron Smith" },
+				{ "pos": "4", "name": "Brooks Koepka" },
+				{ "pos": "5", "name": "Jon Rahm" },
+				{ "pos": "6", "name": "Wyndham Clark" },
+				{ "pos": "7", "name": "Viktor Hovland" },
+				{ "pos": "8", "name": "Rory McIlroy" },
+				{ "pos": "9", "name": "Dustin Johnson" },
+				{ "pos": "10", "name": "Rickie Fowler" }
+			]
+		},
+		{
+			"name": "Peter Winnings",
+			"bet": [
+				{ "pos": "1", "name": "Rory McIlroy" },
+				{ "pos": "2", "name": "Will Zalatoris" },
+				{ "pos": "3", "name": "Tony Finau" },
+				{ "pos": "4", "name": "Jon Rahm" },
+				{ "pos": "5", "name": "Scottie Scheffler" },
+				{ "pos": "6", "name": "Max Homa" },
+				{ "pos": "7", "name": "Tommy Fleetwood" },
+				{ "pos": "8", "name": "Shane Lowry" },
+				{ "pos": "9", "name": "Adrian Meronk" },
+				{ "pos": "10", "name": "Matt Fitzpatrick" }
+			]
+		},
+		{
+			"name": "Donald Glaves",
+			"bet": [
+				{ "pos": "1", "name": "Jon Rahm" },
+				{ "pos": "2", "name": "Joaqu\u00edn Niemann" },
+				{ "pos": "3", "name": "Xander Schauffele" },
+				{ "pos": "4", "name": "Brooks Koepka" },
+				{ "pos": "5", "name": "Rory McIlroy" },
+				{ "pos": "6", "name": "Hideki Matsuyama" },
+				{ "pos": "7", "name": "Sahith Theegala" },
+				{ "pos": "8", "name": "Wyndham Clark" },
+				{ "pos": "9", "name": "Russell Henley" },
+				{ "pos": "10", "name": "Cameron Smith" }
+			]
+		},
+		{
+			"name": "Lorenzo Penaloza",
+			"bet": [
+				{ "pos": "1", "name": "Xander Schauffele" },
+				{ "pos": "2", "name": "Cameron Young" },
+				{ "pos": "3", "name": "Hideki Matsuyama" },
+				{ "pos": "4", "name": "Viktor Hovland" },
+				{ "pos": "5", "name": "Brooks Koepka" },
+				{ "pos": "6", "name": "Wyndham Clark" },
+				{ "pos": "7", "name": "Max Homa" },
+				{ "pos": "8", "name": "Matthieu Pavon" },
+				{ "pos": "9", "name": "Ludvig \u00c5berg" },
+				{ "pos": "10", "name": "Scottie Scheffler" }
+			]
+		},
+		{
+			"name": "Hugo Bor\u00e1s",
+			"bet": [
+				{ "pos": "1", "name": "Rory McIlroy" },
+				{ "pos": "2", "name": "Sahith Theegala" },
+				{ "pos": "3", "name": "Scottie Scheffler" },
+				{ "pos": "4", "name": "Xander Schauffele" },
+				{ "pos": "5", "name": "Adam Scott" },
+				{ "pos": "6", "name": "Viktor Hovland" },
+				{ "pos": "7", "name": "Ludvig \u00c5berg" },
+				{ "pos": "8", "name": "Jordan Spieth" },
+				{ "pos": "9", "name": "Tommy Fleetwood" },
+				{ "pos": "10", "name": "Collin Morikawa" }
+			]
+		},
+		{
+			"name": "Ludwig von M\u00fcller",
+			"bet": [
+				{ "pos": "1", "name": "Dustin Johnson" },
+				{ "pos": "2", "name": "Scottie Scheffler" },
+				{ "pos": "3", "name": "Viktor Hovland" },
+				{ "pos": "4", "name": "Jon Rahm" },
+				{ "pos": "5", "name": "Rory McIlroy" },
+				{ "pos": "6", "name": "Xander Schauffele" },
+				{ "pos": "7", "name": "Keegan Bradley" },
+				{ "pos": "8", "name": "Dustin Johnson" },
+				{ "pos": "9", "name": "Matt Fitzpatrick" },
+				{ "pos": "10", "name": "Max Homa" }
+			]
+		},
+		{
+			"name": "Joseph Gonzalez",
+			"bet": [
+				{ "pos": "1", "name": "Rory McIlroy" },
+				{ "pos": "2", "name": "Brooks Koepka" },
+				{ "pos": "3", "name": "Scottie Scheffler" },
+				{ "pos": "4", "name": "Viktor Hovland" },
+				{ "pos": "5", "name": "Ludvig \u00c5berg" },
+				{ "pos": "6", "name": "Matt Fitzpatrick" },
+				{ "pos": "7", "name": "Jon Rahm" },
+				{ "pos": "8", "name": "Tommy Fleetwood" },
+				{ "pos": "9", "name": "Cameron Smith" },
+				{ "pos": "10", "name": "Tony Finau" }
+			]
+		},
+		{
+			"name": "Sandra Kvitova",
+			"bet": [
+				{ "pos": "1", "name": "Brooks Koepka" },
+				{ "pos": "2", "name": "Jon Rahm" },
+				{ "pos": "3", "name": "Scottie Scheffler" },
+				{ "pos": "4", "name": "Hideki Matsuyama" },
+				{ "pos": "5", "name": "Justin Thomas" },
+				{ "pos": "6", "name": "Rory McIlroy" },
+				{ "pos": "7", "name": "Viktor Hovland" },
+				{ "pos": "8", "name": "Jordan Spieth" },
+				{ "pos": "9", "name": "Ludvig \u00c5berg" },
+				{ "pos": "10", "name": "Tiger Woods" }
+			]
+		},
+		{
+			"name": "Wilfried Zambo Anguissa",
+			"bet": [
+				{ "pos": "1", "name": "Rory McIlroy" },
+				{ "pos": "2", "name": "Brooks Koepka" },
+				{ "pos": "3", "name": "Scottie Scheffler" },
+				{ "pos": "4", "name": "Collin Morikawa" },
+				{ "pos": "5", "name": "Bryson DeChambeau" },
+				{ "pos": "6", "name": "Jon Rahm" },
+				{ "pos": "7", "name": "Tiger Woods" },
+				{ "pos": "8", "name": "Hideki Matsuyama" },
+				{ "pos": "9", "name": "Viktor Hovland" },
+				{ "pos": "10", "name": "Tommy Fleetwood" }
+			]
+		},
+		{
+			"name": "Robert	Lewandowski",
+			"bet": [
+				{ "pos": "1", "name": "Scottie Scheffler" },
+				{ "pos": "2", "name": "Brooks Koepka" },
+				{ "pos": "3", "name": "Jon Rahm" },
+				{ "pos": "4", "name": "Wyndham Clark" },
+				{ "pos": "5", "name": "Cameron Smith" },
+				{ "pos": "6", "name": "Rory McIlroy" },
+				{ "pos": "7", "name": "Xander Schauffele" },
+				{ "pos": "8", "name": "Justin Thomas" },
+				{ "pos": "9", "name": "Viktor Hovland" },
+				{ "pos": "10", "name": "Tommy Fleetwood" }
+			]
+		},
+		{
+			"name": "Matthieu Pavon",
+			"bet": [
+				{ "pos": "1", "name": "Scottie Scheffler" },
+				{ "pos": "2", "name": "Brooks Koepka" },
+				{ "pos": "3", "name": "Will Zalatoris" },
+				{ "pos": "4", "name": "Kurt Kitayama" },
+				{ "pos": "5", "name": "Rory McIlroy" },
+				{ "pos": "6", "name": "Xander Schauffele" },
+				{ "pos": "7", "name": "Cameron Young" },
+				{ "pos": "8", "name": "Hideki Matsuyama" },
+				{ "pos": "9", "name": "Jon Rahm" },
+				{ "pos": "10", "name": "Akshay Bhatia" }
+			]
+		},
+		{
+			"name": "Judge Taylor",
+			"bet": [
+				{ "pos": "1", "name": "Brooks Koepka" },
+				{ "pos": "2", "name": "Rory McIlroy" },
+				{ "pos": "3", "name": "Jon Rahm" },
+				{ "pos": "4", "name": "Scottie Scheffler" },
+				{ "pos": "5", "name": "Sahith Theegala" },
+				{ "pos": "6", "name": "Xander Schauffele" },
+				{ "pos": "7", "name": "Joaqu\u00edn Niemann" },
+				{ "pos": "8", "name": "Jordan Spieth" },
+				{ "pos": "9", "name": "Wyndham Clark" },
+				{ "pos": "10", "name": "Adam Scott" }
+			]
+		},
+		{
+			"name": "Bill Chen",
+			"bet": [
+				{ "pos": "1", "name": "Wyndham Clark" },
+				{ "pos": "2", "name": "Scottie Scheffler" },
+				{ "pos": "3", "name": "Tony Finau" },
+				{ "pos": "4", "name": "Jon Rahm" },
+				{ "pos": "5", "name": "Cameron Smith" },
+				{ "pos": "6", "name": "Ludvig \u00c5berg" },
+				{ "pos": "7", "name": "Will Zalatoris" },
+				{ "pos": "8", "name": "Brooks Koepka" },
+				{ "pos": "9", "name": "Xander Schauffele" },
+				{ "pos": "10", "name": "Rory McIlroy" }
+			]
+		},
+		{
+			"name": "Walter Sorensen",
+			"bet": [
+				{ "pos": "1", "name": "Viktor Hovland" },
+				{ "pos": "2", "name": "Will Zalatoris" },
+				{ "pos": "3", "name": "Xander Schauffele" },
+				{ "pos": "4", "name": "Jon Rahm" },
+				{ "pos": "5", "name": "Max Homa" },
+				{ "pos": "6", "name": "Scottie Scheffler" },
+				{ "pos": "7", "name": "Matt Fitzpatrick" },
+				{ "pos": "8", "name": "Rory McIlroy" },
+				{ "pos": "9", "name": "Hideki Matsuyama" },
+				{ "pos": "10", "name": "Tony Finau" }
+			]
+		},
+		{
+			"name": "Pieter van den Berg",
+			"bet": [
+				{ "pos": "1", "name": "Brooks Koepka" },
+				{ "pos": "2", "name": "Scottie Scheffler" },
+				{ "pos": "3", "name": "Rory McIlroy" },
+				{ "pos": "4", "name": "Jon Rahm" },
+				{ "pos": "5", "name": "Hideki Matsuyama" },
+				{ "pos": "6", "name": "Viktor Hovland" },
+				{ "pos": "7", "name": "Tommy Fleetwood" },
+				{ "pos": "8", "name": "Wyndham Clark" },
+				{ "pos": "9", "name": "Xander Schauffele" },
+				{ "pos": "10", "name": "Jordan Spieth" }
+			]
+		},
+		{
+			"name": "Muhammed Al-Shehri",
+			"bet": [
+				{ "pos": "1", "name": "Jon Rahm" },
+				{ "pos": "2", "name": "Scottie Scheffler" },
+				{ "pos": "3", "name": "Rory McIlroy" },
+				{ "pos": "4", "name": "Tommy Fleetwood" },
+				{ "pos": "5", "name": "Min Woo Lee" },
+				{ "pos": "6", "name": "Brooks Koepka" },
+				{ "pos": "7", "name": "Viktor Hovland" },
+				{ "pos": "8", "name": "Cameron Smith" },
+				{ "pos": "9", "name": "Collin Morikawa" },
+				{ "pos": "10", "name": "Stewart Hagestad (a)" }
+			]
+		},
+		{
+			"name": "Alfred Rodriguez",
+			"bet": [
+				{ "pos": "1", "name": "Rory McIlroy" },
+				{ "pos": "2", "name": "Scottie Scheffler" },
+				{ "pos": "3", "name": "Dustin Johnson" },
+				{ "pos": "4", "name": "Hideki Matsuyama" },
+				{ "pos": "5", "name": "Jon Rahm" },
+				{ "pos": "6", "name": "Brooks Koepka" },
+				{ "pos": "7", "name": "Nicolai H\u00f8jgaard" },
+				{ "pos": "8", "name": "Bryson DeChambeau" },
+				{ "pos": "9", "name": "Christo Lamprecht (a)" },
+				{ "pos": "10", "name": "Justin Thomas" }
+			]
+		},
+		{
+			"name": "Charles Pellegrini",
+			"bet": [
+				{ "pos": "1", "name": "Scottie Scheffler" },
+				{ "pos": "2", "name": "Ludvig \u00c5berg" },
+				{ "pos": "3", "name": "Wyndham Clark" },
+				{ "pos": "4", "name": "Bryson DeChambeau" },
+				{ "pos": "5", "name": "Matt Fitzpatrick" },
+				{ "pos": "6", "name": "Viktor Hovland" },
+				{ "pos": "7", "name": "Jon Rahm" },
+				{ "pos": "8", "name": "Jake Knapp" },
+				{ "pos": "9", "name": "Tony Finau" },
+				{ "pos": "10", "name": "Tiger Woods" }
+			]
+		},
+		{
+			"name": "Dick Walters",
+			"bet": [
+				{ "pos": "1", "name": "Wyndham Clark" },
+				{ "pos": "2", "name": "Jon Rahm" },
+				{ "pos": "3", "name": "Scottie Scheffler" },
+				{ "pos": "4", "name": "Cameron Smith" },
+				{ "pos": "5", "name": "Xander Schauffele" },
+				{ "pos": "6", "name": "Rory McIlroy" },
+				{ "pos": "7", "name": "Hideki Matsuyama" },
+				{ "pos": "8", "name": "Ludvig \u00c5berg" },
+				{ "pos": "9", "name": "Rory McIlroy" },
+				{ "pos": "10", "name": "Patrick Cantlay" }
+			]
+		}
+	]
+}
+

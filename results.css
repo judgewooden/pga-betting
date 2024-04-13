@@ -1,0 +1,69 @@
+.totaal {
+    font-weight: bold;
+    font-size: 1.0em;
+    padding-bottom: 10px;
+}
+.score {
+    padding-left: 8px;
+    text-align: right;
+    width: 8mm;
+}
+.prijs {
+    padding-left: 15px;
+    white-space: nowrap;
+    text-align: right;
+    width: 15mm;
+}
+.punten {
+    padding-left: 3px;
+    text-align: right;
+    width: 5mm;
+}
+.position {
+    padding-right: 5px;
+    text-align: right;
+    width: 8mm;
+}
+.pos {
+    padding-left: 1px;
+    padding-right: 5px;
+    text-align: center;
+    width: 5mm;
+}
+.cut {
+    text-decoration: line-through;
+}
+table  {
+    margin-left: auto;
+    margin-right: auto;
+}
+.gokkers,
+.leaderboard {
+    margin-top: 30px;
+}
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.timestamp {
+    margin-top: 3px;
+    margin-bottom: 8px;
+}
+table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+}
+table th,
+table td {
+    padding: 3px 8px;
+}
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
