@@ -7,7 +7,7 @@ __pycache__/
 bets.json
 results.html
 results.json
-leaderbpard.json
+leaderboard.json
 
 # C extensions
 *.so

@@ -15,10 +15,10 @@ while true; do
 
     python pga-scraper-score.py redis
     
-    if [ "`redis-cli exists 'pga:html'`" == "1" ]; then
-        redis-cli get 'pga:html' | ssh $HOSTUSER "cat > /var/www/html/results.html"
+    if [ "`redis-cli exists 'pga-scaper-score:html'`" == "1" ]; then
+        redis-cli get 'pga-scaper-score:html' | ssh $HOSTUSER "cat > /var/www/html/results.html"
     else
-        echo "The key 'pga:html' does not exist. Probably an error."
+        echo "The key 'pga-scaper-score:html' does not exist. Probably an error."
         exit 1
     fi
 

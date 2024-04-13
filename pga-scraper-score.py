@@ -16,6 +16,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 driver = webdriver.Chrome()
+
 r = redis.Redis(encoding='utf-8', decode_responses=True)
 USE_REDIS = 'redis' in sys.argv
 REDIS_TTL = 15 # in seconds
@@ -58,7 +59,7 @@ def leaderboard():
                 json_output.append(record)
         pga_json['leaderboard'] = json_output
         if USE_REDIS:
-            r.setex("pga:leaderboard", REDIS_TTL, json.dumps(pga_json))
+            r.setex("pga-scaper-score:leaderboard", REDIS_TTL, json.dumps(pga_json))
         else:
             with open("leaderboard.json", "w", encoding='utf-8') as output_file:
                 json.dump(pga_json, output_file, indent=4)
@@ -66,16 +67,14 @@ def leaderboard():
 def load_leaderboard():
     """ loads the leaderboard data.  """
     if USE_REDIS:
-        return json.loads(r.get("pga:leaderboard"))
-    with open('leaderboard.json', encoding='utf-8') as leader_file:
-        leaderboard_json = json.loads(leader_file.read())
-    return leaderboard_json
+        return json.loads(r.get("pga-scaper-score:leaderboard"))
+    with open('leaderboard.json', encoding='utf-8') as file:
+        return json.load(file)
 
 def load_bets():
     """ Load bets from a JSON file """
-    with open('bets.json', encoding='utf-8') as user_file:
-        file_contents = user_file.read()
-    return json.loads(file_contents)
+    with open('bets.json', encoding='utf-8') as file:
+        return json.load(file)
 
 def calc_result():
     """
@@ -134,7 +133,7 @@ def calc_result():
             bet['winnings'] = '€ ' + winnings.replace(".", ",")
 
     if USE_REDIS:
-        r.setex("pga:results", REDIS_TTL, json.dumps(bets_json))
+        r.setex("pga-scaper-score:results", REDIS_TTL, json.dumps(bets_json))
     else:
         with open("results.json", "w", encoding='utf-8') as output_file:
             json.dump(bets_json, output_file, indent=4)
@@ -142,10 +141,9 @@ def calc_result():
 def load_result():
     """ Load the result data """
     if USE_REDIS:
-        return json.loads(r.get("pga:results"))
-    with open('results.json', encoding='utf-8') as user_file:
-        parsed_json = json.loads(user_file.read())
-    return parsed_json
+        return json.loads(r.get("pga-scaper-score:results"))
+    with open('results.json', encoding='utf-8') as file:
+        return json.load(file)
 
 def create_html():
     """
@@ -333,7 +331,7 @@ startAutoRefresh();
     xml_string = parseString(dom.toxml()).toprettyxml()
 
     if USE_REDIS:
-        r.setex("pga:html", REDIS_TTL, xml_string)
+        r.setex("pga-scaper-score:html", REDIS_TTL, xml_string)
     else:
         with open("results.html", "w", encoding="utf-8") as f:
             f.write(xml_string)
