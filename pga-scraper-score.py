@@ -19,7 +19,7 @@ driver = webdriver.Chrome()
 
 r = redis.Redis(encoding='utf-8', decode_responses=True)
 USE_REDIS = 'redis' in sys.argv
-REDIS_TTL = 15 # in seconds
+REDIS_TTL = 90 # in seconds
 
 def leaderboard():
     """ scrape the leaderboard data from espn """
@@ -41,17 +41,21 @@ def leaderboard():
         EC.presence_of_all_elements_located((By.CLASS_NAME, 'Table__TBODY'))
     )
 
+    pga_json['game_on'] = False
     for index, t in enumerate(tables):
         table = t.text
         tablelist = table.split('\n')
 
         json_output = []
         for i in range(0, len(tablelist), 3):
-            record = { 'pos': tablelist[i].replace("-", "").replace(" ", ""),
-                       'name': tablelist[i+1],
-                       'cut': False }
             if (tablelist[i][:3] == 'The') or (tablelist[i][:3] == 'Pro'):
                 break
+            # if "-" in tablelist[i+2].split()[-2]:
+            #     pga_json['game_on'] = True
+            record = { 'pos': tablelist[i].split()[0],
+                       'name': tablelist[i+1],
+                       'cut': False
+                       }
             json_output.append(record)
         # process the cut
         if i < len(tablelist):
@@ -64,9 +68,10 @@ def leaderboard():
         pga_json['leaderboard'] = json_output
         if USE_REDIS:
             r.setex("pga-scaper-score:leaderboard", REDIS_TTL, json.dumps(pga_json))
+            r.setex("pga-scaper-score:game_on", REDIS_TTL, json.dumps(pga_json['game_on']))
         else:
-            with open("leaderboard.json", "w", encoding='utf-8') as output_file:
-                json.dump(pga_json, output_file, indent=4)
+            with open("leaderboard.json", "w", encoding='utf-8') as file:
+                json.dump(pga_json, file, indent=4)
 
 def load_leaderboard():
     """ loads the leaderboard data.  """
@@ -92,6 +97,7 @@ def calc_result():
 
     bets_json = load_bets()
     bets_json['date_time'] = leaderboard_json['date_time']
+    bets_json['game_on'] = leaderboard_json['game_on']
 
     for person in bets_json['gamblers']:
         total = 0
@@ -139,8 +145,8 @@ def calc_result():
     if USE_REDIS:
         r.setex("pga-scaper-score:results", REDIS_TTL, json.dumps(bets_json))
     else:
-        with open("results.json", "w", encoding='utf-8') as output_file:
-            json.dump(bets_json, output_file, indent=4)
+        with open("results.json", "w", encoding='utf-8') as file:
+            json.dump(bets_json, file, indent=4)
 
 def load_result():
     """ Load the result data """
@@ -161,8 +167,11 @@ def create_html():
     )
     dom =  impl.createDocument("http://www.w3.org/1999/xhtml", "html", document_type)
 
+    # HTML
     html = dom.documentElement
-    head = html.appendChild(dom.createElement("head"))
+
+    # HEAD
+    head = dom.createElement("head")
 
     meta = dom.createElement('meta')
     meta.setAttribute('name', 'viewport')
@@ -182,22 +191,31 @@ def create_html():
         css.setAttribute('rel', 'stylesheet')
         css.setAttribute('href', 'results.css')
         head.appendChild(css)
+    html.appendChild(head)
 
     results_json = load_result()
 
-    body = html.appendChild(dom.createElement("body"))
-    div = dom.createElement("div")
-    p = dom.createElement("p")
-    p.setAttribute('class', 'timestamp')
-    p.appendChild(dom.createTextNode(results_json['date_time']))
-    div.appendChild(p)
-    body.appendChild(div)
+    # BODY
+    body = dom.createElement("body")
+    if not results_json['game_on']:
+        div = dom.createElement("div")
+        p = dom.createElement("p")
+        p.appendChild(dom.createTextNode("GAME OVER"))
+        div.appendChild(p)
+        body.appendChild(div)
+    else:
+        div = dom.createElement("div")
+        p = dom.createElement("p")
+        p.setAttribute('class', 'timestamp')
+        p.appendChild(dom.createTextNode(results_json['date_time']))
+        div.appendChild(p)
+        body.appendChild(div)
 
-    # Ranking
+    # TABLE - Ranking
     table = dom.createElement("table")
     table.setAttribute('class', 'leaders')
 
-    thead = table.appendChild(dom.createElement("thead"))
+    thead = dom.createElement("thead")
     tr = dom.createElement("tr")
     th = dom.createElement("th")
     th.setAttribute('colspan', '3')
@@ -205,8 +223,9 @@ def create_html():
     th.appendChild(dom.createTextNode('Ranking'))
     tr.appendChild(th)
     thead.appendChild(tr)
+    table.appendChild(thead)
 
-    tbody = table.appendChild(dom.createElement("tbody"))
+    tbody = dom.createElement("tbody")
     for person in results_json['gamblers']:
 
         tr = dom.createElement("tr")
@@ -227,10 +246,11 @@ def create_html():
         tr.appendChild(td)
 
         tbody.appendChild(tr)
+    table.appendChild(tbody)
 
     body.appendChild(table)
 
-    # Gamblers
+    # TABLE - Gokkers
     table = dom.createElement("table")
     table.setAttribute('class', 'gokkers')
 
@@ -246,11 +266,10 @@ def create_html():
         thead.appendChild(tr)
         table.appendChild(thead)
 
-        tbody = table.appendChild(dom.createElement("tbody"))
+        tbody = dom.createElement("tbody")
         for bet in person["bet"]:
 
             tr = dom.createElement("tr")
-
             td = dom.createElement("td")
             td.setAttribute('class', 'pos')
             td.appendChild(dom.createTextNode(bet['pos']))
@@ -271,6 +290,7 @@ def create_html():
 
             tbody.appendChild(tr)
 
+        table.appendChild(tbody)
         tr = dom.createElement("tr")
 
         td = dom.createElement("td")
@@ -289,19 +309,20 @@ def create_html():
 
     body.appendChild(table)
 
-    # Leaderboard
+    # TABLE - Leaderboard
     table = dom.createElement("table")
     table.setAttribute('class', 'leaderboard')
 
-    thead = table.appendChild(dom.createElement("thead"))
+    thead = dom.createElement("thead")
     tr = dom.createElement("tr")
     th = dom.createElement("th")
     th.setAttribute('colspan', '2')
     th.appendChild(dom.createTextNode('Leaderboard'))
     tr.appendChild(th)
     thead.appendChild(tr)
+    table.appendChild(thead)
 
-    tbody = table.appendChild(dom.createElement("tbody"))
+    tbody = dom.createElement("tbody")
     for person in load_leaderboard()['leaderboard']:
 
         tr = dom.createElement("tr")
@@ -318,27 +339,31 @@ def create_html():
 
         tbody.appendChild(tr)
 
+    table.appendChild(tbody)
     body.appendChild(table)
 
+    # SCRIPTING
     script = dom.createElement("script")
     cdata = dom.createTextNode("""
 function startAutoRefresh() {
     setInterval(function() {
         window.location.reload();
-    }, 180000); 
-}
+    }, 60000);
+};
 startAutoRefresh();
 """)
     script.appendChild(cdata)
     body.appendChild(script)
+
+    html.appendChild(body)
 
     xml_string = parseString(dom.toxml()).toprettyxml()
 
     if USE_REDIS:
         r.setex("pga-scaper-score:html", REDIS_TTL, xml_string)
     else:
-        with open("results.html", "w", encoding="utf-8") as f:
-            f.write(xml_string)
+        with open("results.html", "w", encoding="utf-8") as file:
+            file.write(xml_string)
 
 if __name__ == "__main__":
     leaderboard()

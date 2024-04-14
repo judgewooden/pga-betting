@@ -15,6 +15,7 @@ while true; do
 
     python pga-scraper-score.py redis
     
+    
     if [ "`redis-cli exists 'pga-scaper-score:html'`" == "1" ]; then
         redis-cli get 'pga-scaper-score:html' | ssh $HOSTUSER "cat > /var/www/html/results.html"
     else
@@ -22,7 +23,12 @@ while true; do
         exit 1
     fi
 
-    duration=$((RANDOM % 180 + 180))
+    if [ "`redis-cli get 'pga-scaper-score:game_on'`" != "true" ]; then
+        echo "The key 'pga-scaper-score:game_on' not true, game over?"
+        exit 2
+    fi
+
+    duration=$((RANDOM % 121 + 180))
     echo "sleep $duration"
     sleep $duration
 
@@ -32,6 +38,7 @@ while true; do
         echo "long sleep $duration"
         sleep $duration
     fi
+
 done
 
 
